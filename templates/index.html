@@ -1,0 +1,136 @@
+﻿
+<!-- templates/index.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Business Assistant</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+<body>
+
+    <!-- NAVBAR -->
+
+    <nav class="custom-navbar">
+        <div class="nav-container">
+
+            <div class="logo">
+                AI Business Assistant
+            </div>
+
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="/dashboard">Dashboard</a>
+            </div>
+
+        </div>
+    </nav>
+
+
+    <!-- HERO SECTION -->
+
+    <section class="hero-section">
+
+        <div class="hero-card">
+
+            <h1>
+                Automate lead capture, follow-up, and business conversations
+            </h1>
+
+            <p>
+                Use the AI-powered assistant to answer customer questions and collect new sales leads with notifications and an admin dashboard.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- MAIN CONTENT -->
+
+    <section class="main-grid">
+
+        <!-- CHATBOT -->
+
+        <div class="card">
+
+            <h2>AI Chatbot</h2>
+
+            <p class="card-text">
+                Ask your business assistant a question and get a Gemini-powered response instantly.
+            </p>
+
+            <form id="chatForm">
+
+                <textarea
+                    id="userMessage"
+                    placeholder="Type your business question here"
+                    required
+                ></textarea>
+
+                <button type="submit">
+                    Send Message
+                </button>
+
+            </form>
+
+            <div id="chatStatus" class="status-box mt-3 d-none"></div>
+            <div id="chatWindow" class="chat-window">
+                
+            </div>
+
+        </div>
+
+
+        <!-- LEAD FORM -->
+
+        <div class="card">
+
+            <h2>Capture New Leads</h2>
+
+            <p class="card-text">
+                Collect prospect data and send an email notification automatically when the form is submitted.
+            </p>
+
+            <form id="leadForm">
+
+                <label>Name</label>
+                <input type="text" name="name" placeholder="Full name" required>
+
+                <label>Email</label>
+                <input type="email" name="email" placeholder="Email address" required>
+
+                <label>Phone</label>
+                <input type="text" name="phone" placeholder="Phone number" required>
+
+                <label>Course Interested</label>
+                <input type="text" name="course" placeholder="Service or product" required>
+
+                <label>Message</label>
+                <textarea
+                    name="message"
+                    rows="5"
+                    placeholder="Additional details"
+                ></textarea>
+
+                <button type="submit" class="submit-btn">
+                    Submit Lead
+                </button>
+
+            </form>
+
+            <div id="leadStatus"></div>
+
+        </div>
+
+    </section>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>
+```

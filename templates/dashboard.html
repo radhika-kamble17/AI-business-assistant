@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lead Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+    <nav class="custom-navbar">
+        <div class="nav-container">
+            <div class="logo">AI Business Assistant</div>
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a class="active" href="/dashboard">Dashboard</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero-section">
+        <div class="hero-card">
+            <h1>Lead Dashboard</h1>
+            <p>Review all captured leads from the homepage form in a clean and readable view.</p>
+            <div class="hero-actions">
+                <a href="/" class="hero-link">Home</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="main-grid single-column">
+        <div class="card">
+            <div class="card-header-row">
+                <div>
+                    <h2>Recent Leads</h2>
+                    <p class="card-text">Review all submissions captured through your form.</p>
+                </div>
+            </div>
+
+            {% if leads %}
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Course</th>
+                            <th>Message</th>
+                            <th>Submitted</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for lead in leads %}
+                        <tr>
+                            <td>{{ lead["id"] }}</td>
+                            <td>{{ lead["name"] }}</td>
+                            <td>{{ lead["email"] }}</td>
+                            <td>{{ lead["phone"] }}</td>
+                            <td>{{ lead["course"] }}</td>
+                            <td>{{ lead["message"] }}</td>
+                            <td>{{ lead["created_at"] }}</td>
+                            <td>
+                                <button type="button" class="delete-lead-button" data-lead-id="{{ lead['id'] }}" style="background:#dc2626;color:#fff;border:none;padding:8px 12px;border-radius:12px;cursor:pointer;font-size:0.9rem;">Delete</button>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% else %}
+            <div class="empty-state p-4 text-center">
+                <p class="mb-0">No leads have been captured yet. Submit a new lead from the homepage form to populate this table.</p>
+            </div>
+            {% endif %}
+        </div>
+    </section>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
